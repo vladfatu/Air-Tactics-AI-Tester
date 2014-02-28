@@ -1,5 +1,6 @@
 package com.airtactics.aitester.coreitems;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,24 +11,26 @@ import com.airtactics.aitester.coreitems.Tile.TileType;
  * @author Vlad
  *
  */
-public class Board {
+public class Board implements Serializable{
 	
-	private Tile[][] tileMatrix;
+	private static final long serialVersionUID = -7313359807917057714L;
+	
+	private byte[][] boardMatrix;
 	private List<Plane> planes;
-	
+
 	public Board()
 	{
-		this.tileMatrix = new Tile[10][];
+		this.boardMatrix = new byte[10][];
 		
 		for (int i=0;i<10;i++)
 		{
-			this.tileMatrix[i] = new Tile[10];
+			this.boardMatrix[i] = new byte[10];
 		}
 		
 		for (int i=0;i<10;i++)
     	{
     		for (int j=0;j<10;j++)
-    			this.tileMatrix[i][j] = new Tile(i,j);
+    			this.boardMatrix[i][j] = 0;
     	}
 		
 		this.planes = new ArrayList<Plane>();
@@ -50,21 +53,10 @@ public class Board {
 		
 	}
 
-	public List<Plane> getPlanes()
-	{
-		return planes;
-	}
-
-	public void setPlanes(List<Plane> planes)
-	{
-		this.planes = planes;
-	}
-	
 	public void randomizePlanes()
 	{
 		this.planes.get(0).setRandomDegrees();
 		this.planes.get(0).setRandomPosition();
-		//System.out.println("Plane1 : x : " + this.planes.get(0).getHead().x + " y : " + this.planes.get(0).getHead().y + " degrees : " + this.planes.get(0).getDegrees());
 		
 		boolean collisions = true;
 		while (collisions)
@@ -73,7 +65,6 @@ public class Board {
 			this.planes.get(1).setRandomPosition();
 			if (!this.planes.get(1).hasCollisionsWithPlane(this.planes.get(0)))
 			{
-				//System.out.println("Plane2 : x : " + this.planes.get(1).getHead().x + " y : " + this.planes.get(1).getHead().y + " degrees : " + this.planes.get(1).getDegrees());
 				collisions = false;
 			}
 		}
@@ -86,32 +77,23 @@ public class Board {
 			if (!this.planes.get(2).hasCollisionsWithPlane(this.planes.get(0))
 					&& !this.planes.get(2).hasCollisionsWithPlane(this.planes.get(1)))
 			{
-				//System.out.println("Plane3 : x : " + this.planes.get(2).getHead().x + " y : " + this.planes.get(2).getHead().y + " degrees : " + this.planes.get(2).getDegrees());
 				collisions = false;
 			}
 		}
 	}
 	
-	public boolean isPositionAlreayShot(int x, int y)
+	public boolean isPositionAlreayShot(Point point)
 	{
-		Tile tile = this.tileMatrix[x][y];
-		if (tile.getType() == TileType.NONE)
+		if (boardMatrix[point.x][point.y] == 1)
 		{
-			return false;
+			return true;
 		}
-		else return true;
+		else return false;
 	}
 	
-	public Tile shootPosition(int x, int y)
+	public TileType checkPoint(Point point)
 	{
-		Tile tile = this.tileMatrix[x][y];
-		TileType tileType = checkPoint(new Point(x, y));
-		tile.setType(tileType);
-		return tile;
-	}
-	
-	private TileType checkPoint(Point point)
-	{
+		this.boardMatrix[point.x][point.y] = 1;
 		for (Plane plane : this.planes)
 		{
 			if (point.equals(plane.getHead()))
@@ -131,7 +113,7 @@ public class Board {
 		int count = 0;
 		for (Plane plane : this.planes)
 		{
-			if (this.tileMatrix[plane.getHead().x][plane.getHead().y].getType() == TileType.HIT_HEAD)
+			if (this.boardMatrix[plane.getHead().x][plane.getHead().y] == 1)
 			{
 				count++;
 			}

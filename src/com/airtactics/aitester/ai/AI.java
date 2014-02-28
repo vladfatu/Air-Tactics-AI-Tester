@@ -1,7 +1,7 @@
 package com.airtactics.aitester.ai;
 
 import com.airtactics.aitester.coreitems.Board;
-import com.airtactics.aitester.coreitems.Tile;
+import com.airtactics.aitester.coreitems.Tile.TileType;
 
 public abstract class AI {
 	
@@ -12,7 +12,7 @@ public abstract class AI {
 		this.opponentBoard = opponentBoard;
 	}
 	
-	public abstract Tile shoot();
+	public abstract TileType shoot();
 	
 	public Board getOpponentBoard()
 	{

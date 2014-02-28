@@ -15,13 +15,13 @@ public class Game {
 		AI winner = null;
 		while (winner == null)
 		{
-			Tile tile = player1.shoot();
-			if (tile.getType() == TileType.HIT_HEAD && player1.getOpponentBoard().getNumberOfHitHeads() == Constants.NUMBER_OF_PLANES)
+			TileType tileType = player1.shoot();
+			if (tileType == TileType.HIT_HEAD && player1.getOpponentBoard().getNumberOfHitHeads() == Constants.NUMBER_OF_PLANES)
 			{
 				winner = player1;
 			}
-			tile = player2.shoot();
-			if (tile.getType() == TileType.HIT_HEAD && player2.getOpponentBoard().getNumberOfHitHeads() == Constants.NUMBER_OF_PLANES)
+			tileType = player2.shoot();
+			if (tileType == TileType.HIT_HEAD && player2.getOpponentBoard().getNumberOfHitHeads() == Constants.NUMBER_OF_PLANES)
 			{
 				winner = player2;
 			}
@@ -36,8 +36,8 @@ public class Game {
 		while (!finished)
 		{
 			count++;
-			Tile tile = player.shoot();
-			if (tile.getType() == TileType.HIT_HEAD && player.getOpponentBoard().getNumberOfHitHeads() == Constants.NUMBER_OF_PLANES)
+			TileType tileType = player.shoot();
+			if (tileType == TileType.HIT_HEAD && player.getOpponentBoard().getNumberOfHitHeads() == Constants.NUMBER_OF_PLANES)
 			{
 				finished = true;
 			}
