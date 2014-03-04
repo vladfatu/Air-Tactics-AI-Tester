@@ -12,22 +12,28 @@ public class AverageShotsTester {
 		Game game = new Game();
 		int numberOfGames = 100000;
 		int totalShots = 0;
+		long maxTime = 0;
 		
 		for (int i = 0; i < numberOfGames; i++)
 		{
-			
+			long startTime = System.currentTimeMillis();
 			Board board = new Board();
 			board.randomizePlanes();
 			AI player = new SimpleAi(board);
 			
 			int shots = game.playSingle(player);
-			System.out.println("Game number " + i + " number of shots: " + shots);
+			long shootTime = System.currentTimeMillis() - startTime;
+			System.out.println("Game number " + i + " number of shots: " + shots + " in " + shootTime + " milliseconds");
+			if (shootTime > maxTime)
+			{
+				maxTime = shootTime;
+			}
 			totalShots += shots;
 			
 		}
 		
 		double average = (double) totalShots / numberOfGames;
-		System.out.println("Avarage shots: " + average);
+		System.out.println("Avarage shots: " + average + " max time: " + maxTime);
 	}
 	
 }
