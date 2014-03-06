@@ -2,6 +2,8 @@ package com.airtactics.aitester.tester;
 
 import com.airtactics.aitester.ai.AI;
 import com.airtactics.aitester.ai.SimpleAi;
+import com.airtactics.aitester.ai.SmartAI;
+import com.airtactics.aitester.ai.SmartRandomAI;
 import com.airtactics.aitester.coreitems.Board;
 import com.airtactics.aitester.coreitems.Game;
 
@@ -19,7 +21,7 @@ public class AverageShotsTester {
 			long startTime = System.currentTimeMillis();
 			Board board = new Board();
 			board.randomizePlanes();
-			AI player = new SimpleAi(board);
+			AI player = new SmartAI(board);
 			
 			int shots = game.playSingle(player);
 			long shootTime = System.currentTimeMillis() - startTime;
