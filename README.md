@@ -24,5 +24,6 @@ SmartRandomAI ~ 67 moves
 - generates an initial probability matrix with each value representing the number of planes that can have their head on that tile
 
 SmartAI ~ 23.5 moves
+-------
 
 //TODO
