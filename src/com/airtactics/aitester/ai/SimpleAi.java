@@ -6,6 +6,10 @@ import com.airtactics.aitester.coreitems.Board;
 import com.airtactics.aitester.coreitems.Point;
 import com.airtactics.aitester.coreitems.Tile.TileType;
 
+/**
+ * @author Vlad
+ *
+ */
 public class SimpleAi extends AI{
 
 	public SimpleAi(Board opponentBoard) {

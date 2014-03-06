@@ -6,6 +6,10 @@ import com.airtactics.aitester.coreitems.Board;
 import com.airtactics.aitester.coreitems.Point;
 import com.airtactics.aitester.coreitems.Tile.TileType;
 
+/**
+ * @author Vlad
+ *
+ */
 public class RandomAI extends AI{
 
 	public RandomAI(Board opponentBoard) {

@@ -3,6 +3,10 @@ package com.airtactics.aitester.ai;
 import com.airtactics.aitester.coreitems.Board;
 import com.airtactics.aitester.coreitems.Tile.TileType;
 
+/**
+ * @author Vlad
+ *
+ */
 public abstract class AI {
 	
 	private Board opponentBoard;

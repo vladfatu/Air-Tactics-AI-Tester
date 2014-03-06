@@ -6,6 +6,10 @@ import com.airtactics.aitester.ai.SimpleAi;
 import com.airtactics.aitester.coreitems.Board;
 import com.airtactics.aitester.coreitems.Game;
 
+/**
+ * @author Vlad
+ *
+ */
 public class GamePlayTester {
 	
 	public static void main(String[] args)
