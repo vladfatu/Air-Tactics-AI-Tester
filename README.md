@@ -35,7 +35,7 @@ SmartRandomAI ~ 67 moves
 0 1 1 1 1 1 1 1 1 0 <br/>
 
 
-SmartAI ~ 23.5 moves
+SmartAI ~ 21 moves
 -------
 
 
